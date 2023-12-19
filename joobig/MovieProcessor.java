@@ -1,6 +1,10 @@
 import movie.MovieDTO;
 
 public class MovieProcessor {
+    // REVIEW
+    // Java 애플리케이션 내에서 main은 반드시 하나만 존재헤야합니다
+    // 지금구조 같이 MovieProcessor와 MovieOpreations두 클래스 내에 각각 메인함수가 있다면 
+    // 두 클래스 각각 다른 프로그램으로 인식될거에요
     public static void main(String[] args) {
 
         MovieDTO[] m = new MovieDTO[3];

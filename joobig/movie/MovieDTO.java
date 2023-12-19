@@ -4,6 +4,7 @@ import java.lang.*;
 
 
 public class MovieDTO {
+    // 각각 변수명 앞에 m이 붙는 이유가 따로 있을까요?
     private String mtitle;
     private String mmajor;
     private int mruntime;
