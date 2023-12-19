@@ -58,6 +58,11 @@ public class MovieOperations {
     }
 
     public boolean isValidGenre(int genre) {
+        // REVIEW
+        // 장르에 enum을 사용했었으면 좋았을거 같아요
+        // 만약 나중에 장르가 추가된다면 입력받는 부분과 validGenre 등 수정해야할 곳이 많아지는데
+        // enum을 사용하면 Genre.values().length > genre 와 같이 enum의 값과 비교하는 로직만 작성 후
+        // 장르가 추가될 때 enum에만 추가해주면 코드에 추가적인 수정이 필요 없어지게 되거든요
         return genre >= 1 && genre <= 3;
     }
 }

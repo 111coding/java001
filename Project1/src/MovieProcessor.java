@@ -20,6 +20,9 @@ public class MovieProcessor {
             System.out.println("1.영화입력(I) 2.영화출력(P) 3.영화검색(S) 4.종료(E)");
             System.out.println("=============================================");
             System.out.print("메뉴입력: ");
+            // REVIEW
+            // 입력값을 대문자로 치환한 후 비교하면 소문자로도 입력을 받을 수 있어서 편해질거 같아요
+            // scanner.nextLine().toUpperCase() 이렇게요
             switch (scanner.nextLine()) {
                 case "I":
                     addMovie(scanner, operations);
@@ -41,7 +44,13 @@ public class MovieProcessor {
 
     private static void addMovie(Scanner scanner, MovieOperations operations) {
         System.out.print("저장할 영화 데이터 수를 입력하세요: ");
+        // REVIEW
+        // nextInt를 사용할 때에는 예외처리를 잘 해주어야 돼요
+        // 사용자가 문자열을 입력하면 애플리케이션이 터지게 되거든요
+        // scanner의 입력을 받아서 int 를 리턴해주는 유틸 함수를 만들고 해당 함수내에서 예외처리를 해놓으면
+        // 다른곳에서도 사용할 수 있어서 개발할 때 편하실거에요
         int numberOfMovies = scanner.nextInt();
+        // 불필요한 코드
         scanner.nextLine();
 
         for(int i = 0; i < numberOfMovies; ++i) {
@@ -61,6 +70,8 @@ public class MovieProcessor {
             double rating = scanner.nextDouble();
             System.out.print("장르 (1: 드라마, 2: 액션, 3: 호러): ");
             int genre = scanner.nextInt();
+            // REVIEW
+            // 불필요한 코드 아닌가요?
             scanner.nextLine();
             MovieDTO movie = new MovieDTO(title, major, runningTime, rating, genre);
             operations.addMovie(movie);
