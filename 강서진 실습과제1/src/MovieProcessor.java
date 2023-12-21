@@ -2,6 +2,8 @@ import model.MovieDTO;
 
 import java.util.*;
 
+import enums.Genre;
+
 public class MovieProcessor {
     public static void main(String[] args) {
         MovieOperations movieOp= new MovieOperations();
@@ -36,7 +38,8 @@ public class MovieProcessor {
             // 영화 장르로 검색
             else if (menu.equals("S")||menu.equals("s")) {
                 if (movieOp.emptyMovies()) {} else {
-                    System.out.println("장르를 입력하세요.\n1=드라마, 2=액션, 3=호러");
+                    System.out.println("장르를 입력하세요.");
+                    Genre.printLabels();
                     int gen = Integer.parseInt(movieOp.scan.nextLine());
                     movieOp.searchByGenre(gen);
                 }

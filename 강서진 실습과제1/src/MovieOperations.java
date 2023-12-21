@@ -2,6 +2,8 @@ import model.MovieDTO;
 
 import java.util.*;
 
+import enums.Genre;
+
 public class MovieOperations {
     List<MovieDTO> movies;
     Scanner scan;
@@ -48,12 +50,13 @@ public class MovieOperations {
             int runningTime = Integer.parseInt(scan.nextLine());
             System.out.println("평점: ");
             float rating = Float.parseFloat(scan.nextLine());
-            System.out.println("장르:\n(1=드라마, 2=액션, 3=호러) ");
+            System.out.println("장르:");
+            Genre.printLabels();
             int genre = Integer.parseInt(scan.nextLine());
             // 장르 1,2,3 외의 숫자 입력 시
             while ((genre > 3) || (genre < 1)) {
                 System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
-                System.out.println("장르:\n(1=드라마, 2=액션, 3=호러) ");
+                Genre.printLabels();
                 genre = Integer.parseInt(scan.nextLine());
             }
 
@@ -92,16 +95,7 @@ public class MovieOperations {
              *  Genre.values()[movie.getGenre()].label
              */
 
-            switch (movie.getGenre()) {
-                case (1):
-                    System.out.println("장르: 드라마");
-                    break;
-                case (2):
-                    System.out.println("장르: 액션");
-                    break;
-                case (3):
-                    System.out.println("장르: 호러");
-            }
+            System.out.println("장르: " + movie.getGenre().getLabel());
             System.out.println("-----------------");
         }
     }
@@ -124,28 +118,19 @@ public class MovieOperations {
     // 장르로 검색
     public void searchByGenre(int gen) {
         // 1,2,3 외의 숫자 입력시
-        while ((gen > 3) || (gen < 1)) {
+        while ((gen > Genre.values().length) || (gen < 1)) {
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             gen = Integer.parseInt(scan.nextLine());
         }
 
         int count = 0;
         for (MovieDTO movie : movies) {
-            if (movie.getGenre() == gen) {
+            if (movie.getGenre().ordinal() + 1 == gen) {
                 System.out.println("영화명: " + movie.getTitle());
                 System.out.println("영화 주인공: " + movie.getMajor());
                 System.out.println("상영시간: " + movie.getRunningTime());
                 System.out.println("평점: " + movie.getRating());
-                switch (movie.getGenre()) {
-                    case (1):
-                        System.out.println("장르: 드라마");
-                        break;
-                    case (2):
-                        System.out.println("장르: 액션");
-                        break;
-                    case (3):
-                        System.out.println("장르: 호러");
-                }
+                System.out.println("장르: " + movie.getGenre().getLabel());
                 count++;
             }
         }
@@ -165,16 +150,7 @@ public class MovieOperations {
                 System.out.println("영화 주인공: " + movie.getMajor());
                 System.out.println("상영시간: " + movie.getRunningTime());
                 System.out.println("평점: " + movie.getRating());
-                switch (movie.getGenre()) {
-                    case (1):
-                        System.out.println("장르: 드라마");
-                        break;
-                    case (2):
-                        System.out.println("장르: 액션");
-                        break;
-                    case (3):
-                        System.out.println("장르: 호러");
-                }
+                System.out.println("장르: " + movie.getGenre().getLabel());
                 count++;
             }
         }

@@ -1,5 +1,6 @@
 package model;
 
+import enums.Genre;
 public class MovieDTO {
     // 세부정보는 제목(title), 주인공(major), 상영시간(runningTime), 평점(rating), 장르(genre)로
     //구성됩니다.
@@ -8,7 +9,7 @@ public class MovieDTO {
     private String major;
     private int runningTime;
     private float rating;
-    private int genre;
+    private Genre genre;
 
     public MovieDTO(){}
 
@@ -17,7 +18,8 @@ public class MovieDTO {
         this.major = major;
         this.runningTime = runningTime;
         this.rating = rating;
-        this.genre = genre;
+        // ui에서 장르가 1부터 시작해서 1빼줌
+        this.genre = Genre.values()[genre - 1]; // TODO length check
     }
 
     public String getTitle() {
@@ -52,11 +54,11 @@ public class MovieDTO {
         this.rating = rating;
     }
 
-    public int getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -67,7 +69,7 @@ public class MovieDTO {
                 ", major='" + major + '\'' +
                 ", runningTime=" + runningTime +
                 ", rating=" + rating +
-                ", genre=" + genre +
+                ", genre=" + genre.getLabel() +
                 '}';
     }
 }
